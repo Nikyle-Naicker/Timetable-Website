@@ -1,0 +1,35 @@
+﻿@page
+@model PROG2BPOE.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login page";
+}
+@if (TempData["success"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+    </script>
+}
+
+<div class="mb-1" >
+    <form method="post" >
+        <h2 class="text-center" >Login Page</h2>
+        <h5 class="text-center" >Welcome Back</h5>
+        <div class="col-10 w-100 text-center">
+            <i class="fa-solid fa-user fa-10x" style="color: #ffffff;"></i>
+        </div>
+        <label class="form-label" >Email</label>
+        <input asp-for="Username" class="form-control" id="username" required />
+        <span asp-validation-for="Username" class="text-danger"></span>
+        <label class="form-label" >Password</label>
+        <input asp-for="Password" id="password" class="form-control" type="password" required />
+        <span asp-validation-for="Password" class="text-danger"></span>
+        <a asp-area="" asp-page="/Register">
+            <p>Don't have an account register here</p>
+        </a>
+        <div class="d-grid gap-2 col-2 mx-auto">
+        <input class="btn-outline-dark btn-lg" type="submit" />
+        </div>
+    </form>
+</div>

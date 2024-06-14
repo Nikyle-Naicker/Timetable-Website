@@ -1,0 +1,33 @@
+﻿@page
+@model PROG2BPOE.Pages.CreateModuleModel
+@{
+}
+<form method="post" >
+    <div class="border p-3 mt-4" >
+        <div class="row-pb-2" >
+            <h2 class="pl-3" >Create Module</h2>
+            <hr/>
+        </div>
+        <div class="mb-3" >
+            Module Code:
+            <input asp-for="@Model.modules.ModuleCode" class="form-control" />
+            <span asp-validation-for="@Model.modules.ModuleCode" class="text-danger" ></span>
+        </div>
+        <div class="mb-3">
+           Module Name:
+            <input asp-for="@Model.modules.ModuleName" class="form-control" />
+            <span asp-validation-for="@Model.modules.ModuleName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            Credits:
+            <input asp-for="@Model.modules.Credits" class="form-control" />
+            <span asp-validation-for="@Model.modules.Credits" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            Class hours per Week:
+            <input asp-for="@Model.modules.ClassHours" class="form-control" />
+            <span asp-validation-for="@Model.modules.ClassHours" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" >Create</button>
+    </div>
+</form>

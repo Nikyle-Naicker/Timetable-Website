@@ -1,0 +1,23 @@
+﻿@page
+@model PROG2BPOE.Pages.CreateSemesterModel
+@{
+}
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row-pb-2">
+            <h2 class="pl-3">Create Semester</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            Start Date:
+            <input asp-for="@Model.semester.StartDate" class="form-control" />
+            <span asp-validation-for="@Model.semester.StartDate" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            Number of weeks in the Semester:
+            <input asp-for="@Model.semester.NumWeeks" class="form-control" />
+            <span asp-validation-for="@Model.semester.NumWeeks" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form>

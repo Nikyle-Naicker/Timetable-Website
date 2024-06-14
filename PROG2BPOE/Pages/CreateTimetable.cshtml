@@ -1,0 +1,28 @@
+﻿@page
+@model PROG2BPOE.Pages.CreateTimetableModel
+@{
+}
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row-pb-2">
+            <h2 class="pl-3">Create Timetable Record</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            Week:
+            <input asp-for="@Model.records.Week" class="form-control" />
+            <span asp-validation-for="@Model.records.Week" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            Number of self-study hours done for the week:
+            <input asp-for="@Model.records.SelfStudy" class="form-control" />
+            <span asp-validation-for="@Model.records.SelfStudy" class="text-danger"></span>
+        </div>
+        @* <div class="mb-3">
+            Credits:
+            <input asp-for="@Model.modules.Credits" class="form-control" />
+            <span asp-validation-for="@Model.modules.Credits" class="text-danger"></span>
+        </div> *@
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form>

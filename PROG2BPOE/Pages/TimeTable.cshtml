@@ -1,0 +1,71 @@
+﻿@page
+@model PROG2BPOE.Pages.TimeTableModel
+@{
+}
+@if (TempData["success"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+    </script>
+}
+@if (HttpContext.Session.GetString("UserId") == null)
+{
+    <div class="text-center container position-absolute top-50 start-50 translate-middle ">
+        <h1 class="display-4">Please Login in order to use this feature</h1>
+        <p>Please <a asp-page="/Login">Login</a> or <a asp-page="/Register">Register</a> to continue</p>
+    </div>
+}
+else
+{
+    <div class="container p-3">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2>Timetable</h2>
+            </div>
+            <div class="col-6">
+                <a asp-page="CreateTimetable" class="btn btn-primary">Create New Timetable record</a>
+            </div>
+        </div>
+        <br /><br />
+        <table class="table table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Week
+                    </th>
+                    <th>
+                        Number of hours spent self studying
+                    </th>
+                    <th>
+                        Hours of self study needed each week
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @try
+                {
+
+
+                    foreach (var obj in Model.records)
+                    {
+                        <tr>
+                            <td width="33%">@obj.Week</td>
+                            <td width="33%">@obj.SelfStudy</td>
+                            <td width="33%"></td>
+
+                        </tr>
+                    }
+                }
+                catch
+                {
+
+                }
+            </tbody>
+        </table>
+
+    </div>
+}
+

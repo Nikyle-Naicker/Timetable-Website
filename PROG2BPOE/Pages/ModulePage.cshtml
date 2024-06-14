@@ -1,0 +1,73 @@
+﻿@page
+@model ModulePageModel
+@{
+    ViewData["Title"] = "Module";
+}
+@if (HttpContext.Session.GetString("UserId") == null)
+{
+    <div class="text-center container position-absolute top-50 start-50 translate-middle ">
+        <h1 class="display-4">Please Login in order to use this feature</h1>
+        <p>Please <a asp-page="/Login">Login</a> or <a asp-page="/Register">Register</a> to continue</p>
+    </div>
+}
+@if (TempData["success"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+    </script>
+}
+@if (HttpContext.Session.GetString("UserId") != null)
+{
+    <div class="container p-3">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2>Module List</h2>
+            </div>
+            <div class="col-6">
+                <a asp-page="CreateModule" class="btn btn-primary">Create New Module</a>
+            </div>
+        </div>
+        <br /><br />
+        <table class="table table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Module Code
+                    </th>
+                    <th>
+                        Module Name
+                    </th>
+                    <th>
+                        Credits
+                    </th>
+                    <th>
+                        Class Hours per Week
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @try
+                {
+                    foreach (var obj in Model.modules)
+                    {
+                        <tr>
+                            <td width="15%">@obj.ModuleCode</td>
+                            <td width="60%">@obj.ModuleName</td>
+                            <td width="10%">@obj.Credits</td>
+                            <td width="15%">@obj.ClassHours</td>
+                        </tr>
+                    }
+                }
+                catch
+                {
+
+                }
+            </tbody>
+        </table>
+
+    </div>
+}
+
+

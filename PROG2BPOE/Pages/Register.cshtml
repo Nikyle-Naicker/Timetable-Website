@@ -1,0 +1,25 @@
+﻿@page
+@model PROG2BPOE.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register page";
+}
+
+<div class="mb-1">
+    <form method="post" >
+        <h2 class="text-center">Register Page</h2>
+        <h5 class="text-center">Welcome</h5>
+        <div class="col-10 w-100 text-center">
+            <i class="fa-solid fa-user fa-10x" style="color: #ffffff;"></i>
+        </div>
+        <label class="form-label" for="RegisterUser">Email</label>
+        <input type="email" class="form-control" asp-for="Username" id="username" />
+        <label class="form-label" for="RegisterPass">Password</label>
+        <input id="password" class="form-control" asp-for="Password" type="password" />
+        <a asp-area="" asp-page="/Login">
+            <p>Already have an account login here</p>
+        </a>
+        <div class="d-grid gap-2 col-2 mx-auto">
+            <input class="btn-outline-dark btn-lg" type="submit" />
+        </div>
+    </form>
+</div>

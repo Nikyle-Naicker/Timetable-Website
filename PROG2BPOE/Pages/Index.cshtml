@@ -1,0 +1,21 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@if (TempData["success"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+    </script>
+}
+@if(HttpContext.Session.GetString("UserId") == null)
+{
+    <div class="text-center container position-absolute top-50 start-50 translate-middle">
+    <h1 class="display-4">Welcome to the VC Time Management system</h1>
+    <p>Please <a asp-page="/Login">Login</a> or <a asp-page="/Register">Register</a> to continue</p>
+    </div>
+}
+

@@ -1,0 +1,62 @@
+﻿@page
+@model PROG2BPOE.Pages.SemesterPageModel
+
+@if (TempData["success"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+    </script>
+}
+@if (HttpContext.Session.GetString("UserId") == null)
+{
+    <div class="text-center container position-absolute top-50 start-50 translate-middle ">
+        <h1 class="display-4">Please Login in order to use this feature</h1>
+        <p>Please <a asp-page="/Login">Login</a> or <a asp-page="/Register">Register</a> to continue</p>
+    </div>
+}
+@if (HttpContext.Session.GetString("UserId") != null)
+{
+    <div class="container p-3">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2>Semester List</h2>
+            </div>
+            <div class="col-6">
+                <a asp-page="CreateSemester" class="btn btn-primary">Create New Semester Record</a>
+            </div>
+        </div>
+        <br /><br />
+        <table class="table table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Start Date
+                    </th>
+                    <th>
+                        Number of weeks in Semester
+                </tr>
+            </thead>
+            <tbody>
+                @try
+                {
+
+
+                    foreach (var obj in Model.semester)
+                    {
+                        <tr>
+                            <td width="60%">@obj.StartDate</td>
+                            <td width="40%">@obj.NumWeeks</td>
+                        </tr>
+                    }
+                }
+                catch
+                {
+
+                }
+            </tbody>
+        </table>
+
+    </div>
+}
