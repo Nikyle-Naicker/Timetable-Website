@@ -46,7 +46,7 @@
                     foreach (var obj in Model.semester)
                     {
                         <tr>
-                            <td width="60%">@obj.StartDate</td>
+                            <td width="60%">@obj.StartDate.ToShortDateString()</td>
                             <td width="40%">@obj.NumWeeks</td>
                         </tr>
                     }

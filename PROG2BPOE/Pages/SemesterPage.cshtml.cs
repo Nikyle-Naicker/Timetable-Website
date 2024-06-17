@@ -29,7 +29,6 @@ namespace PROG2BPOE.Pages
                 
                 //semester = db.Semester
                 semester = db.Semester.Where(s => s.Username.Contains(user));
-
             }
             
         }
