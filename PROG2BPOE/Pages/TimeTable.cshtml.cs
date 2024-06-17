@@ -10,6 +10,8 @@ namespace PROG2BPOE.Pages
     {
         private readonly dbcontext db;
         public IEnumerable<Records> records { get; set; }
+        public IEnumerable<Modules> modules { get; set; }
+        public IEnumerable<Semesters> semester { get; set; }
         //Connects to the database
         public TimeTableModel(dbcontext _db)
         {
@@ -21,13 +23,12 @@ namespace PROG2BPOE.Pages
             if (user != null)
             {
                 records = db.Timetable.Where(t => t.Username.Contains(user));
+                
             }
             else
             {
                 RedirectToPage("/Login"); 
             }
-            //Gets all the data from the semester table in the database and stores it in the IEnumerable
-           
         }
     }
 }

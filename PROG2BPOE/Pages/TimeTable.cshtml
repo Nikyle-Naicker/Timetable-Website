@@ -41,7 +41,18 @@ else
                     <th>
                         Hours of self study needed each week
                     </th>
-
+                    <th>
+                        Module ID
+                    </th>
+                    <th>
+                        Module Name
+                    </th>
+                    <th>
+                        Semester ID
+                    </th>
+                    <th>
+                        Number of weeks in the semester
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -52,10 +63,24 @@ else
                     foreach (var obj in Model.records)
                     {
                         <tr>
-                            <td width="33%">@obj.Week</td>
-                            <td width="33%">@obj.SelfStudy</td>
-                            <td width="33%"></td>
+                            <td width="10%">@obj.Week</td>
+                            <td width="10%">@obj.SelfStudy</td>
+                            <td width="10%"></td>
 
+                        </tr>
+                    }
+                    foreach (var obj in Model.modules)
+                    {
+                        <tr>
+                            <td width="10%">@obj.ModuleID</td>
+                            <td width="30%">@obj.ModuleName</td>
+                        </tr>
+                    }
+                    foreach(var obj in Model.semester)
+                    {
+                        <tr>
+                            <td width="10%">@obj.SemesterID</td>
+                            <td width="10%">@obj.NumWeeks</td>
                         </tr>
                     }
                 }
